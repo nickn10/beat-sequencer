@@ -1,38 +1,41 @@
 body {
+   margin: 0;
+   padding: 0;
+   margin-top: 2rem;
    background: url(https://images.unsplash.com/photo-1477233534935-f5e6fe7c1159?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4a560d668d4e1af8675f367dc344a08c&auto=format&fit=crop&w=1050&q=80) no-repeat center fixed;
    background-size: cover;
    /* background-color: black; */
    color: aliceblue;
 }
 
+
+
 #controls {
-   background-color: rgba(100, 100, 100, .8);
+   background-color:#3f3f3f;
+   border-radius: .6rem;
+   flex: 3;
 }
 
-h1 {
-   text-align: center;
+#play-btn {
+   height: 50%;
+   width: 10%;
+   background-color: #BBA87F;
 }
 
 .main-content {
    padding: .6rem;
    margin: 0 auto;
-   height: 80vh;
-   width: 95vw;
+   height: 85vh;
+   width: 90vw;
    flex-direction: column;
-   background-color: #3D3D3D;
+   background-color: #303030;
    border-radius: 1rem;
 }
 
 .beat-pad {
-   /* border: .05rem solid rgb(94, 92, 92); */
    margin: .2rem;
    padding: 0;
    flex: 1;
-   border-radius: 12px;
-}
-
-.beat-pad:hover {
-   opacity: .9;
 }
 
 .beat-pad:active {
@@ -66,29 +69,24 @@ h1 {
 .instrument {
    display: flex;
    flex-wrap: warp;
-   align-items: space-around;
+   align-items: center;
    justify-content: center;
    flex: 2;
 }
 
 .instrument-btn {
-   background-color: #3f3f3f;
-   margin-top: .4rem;
-   border: none;
-   border-radius: .6rem;
+   background-color: #2f2f2f;
    font-size: 1rem;
    color: white;
-   outline: none;
-   height: 80%;
-   width: 90%;
-   display: block;
+   height: 90%;
+   width: 95%;
 }
 
-.instrument-btn:hover {
+.btn:hover {
    opacity: .9;
 }
 
-.instrument-btn:active {
+.btn:active {
    transform: scale(0.98);
 }
 
@@ -102,4 +100,10 @@ h1 {
 
 .flex-grid {
    display: flex;
+}
+
+.btn {
+   border: none;
+   outline: none;
+   border-radius: .5rem;
 }
