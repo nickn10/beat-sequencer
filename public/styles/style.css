@@ -27,6 +27,21 @@ h1 {
    height: 40px;
    flex-direction: row;
    flex-grow: 1;
+   align-content: center;
+}
+
+.instrument {
+   height: 100%;
+   display: flex;
+   align-content: center;
+   justify-content: center;
+   width: 60px;
+}
+
+.instrument-name {
+   display: flex;
+   align-content: center;
+   justify-content: center;
 }
 
 .active {
