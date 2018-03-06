@@ -7,6 +7,16 @@ body {
    color: aliceblue;
 }
 
+.main-content {
+   padding: .6rem;
+   margin: 0 auto;
+   height: 85vh;
+   width: 85vw;
+   flex-direction: column;
+   background-color: #303030;
+   border-radius: 1rem;
+}
+
 #controls {
    padding: .5rem;
    background-color:#3f3f3f;
@@ -14,6 +24,30 @@ body {
    flex: 3;
 }
 
+.buffer {
+   flex: 3;
+}
+
+.step {
+   margin-top: .5rem;
+   padding-right: .2rem;
+   flex: 1;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.light {
+   height: .7rem;
+   width: .7rem;
+   background-color: black;
+   border-radius: 50%;
+}
+
+.large {
+   height: 1rem;
+   width: 1rem;
+}
 #play-btn {
    height: 50%;
    width: 10%;
@@ -29,16 +63,6 @@ body {
 
 .change-tempo, .btn, #play-btn:hover {
    cursor: pointer;
-}
-
-.main-content {
-   padding: .6rem;
-   margin: 0 auto;
-   height: 85vh;
-   width: 85vw;
-   flex-direction: column;
-   background-color: #303030;
-   border-radius: 1rem;
 }
 
 .beat-pad {

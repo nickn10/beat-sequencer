@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +8,7 @@
    <link rel="stylesheet" href="public/styles/style.css">
    <title>Beat Sequencer</title>
 </head>
-
 <body>
-
    <div id="sequencer" class="main-content flex-grid" data-playing="false">
       <!-- CONTROLS -->
       <div id="controls">
@@ -20,10 +17,28 @@
          </button>
          <input type="number" id="tempo" value="120">
       </div>
+      <div class="flex-grid step-indcator">
+         <div class="buffer"></div>
+         <div class="step"><span class="light large" data-step="0"></span></div>
+         <div class="step"><span class="light" data-step="1"></span></div>
+         <div class="step"><span class="light" data-step="2"></span></div>
+         <div class="step"><span class="light" data-step="3"></span></div>
+         <div class="step"><span class="light large" data-step="4"></span></div>
+         <div class="step"><span class="light" data-step="5"></span></div>
+         <div class="step"><span class="light" data-step="6"></span></div>
+         <div class="step"><span class="light" data-step="7"></span></div>
+         <div class="step"><span class="light large" data-step="8"></span></div>
+         <div class="step"><span class="light" data-step="9"></span></div>
+         <div class="step"><span class="light" data-step="10"></span></div>
+         <div class="step"><span class="light" data-step="11"></span></div>
+         <div class="step"><span class="light large" data-step="12"></span></div>
+         <div class="step"><span class="light" data-step="13"></span></div>
+         <div class="step"><span class="light" data-step="14"></span></div>
+         <div class="step"><span class="light" data-step="15"></span></div>
+      </div>
       <!-- INSTRUMENTS -->
    </div>
    <script src="public/scripts/load-kits.js"></script>
    <script src="public/scripts/index.js"></script>
 </body>
-
 </html>

@@ -3,7 +3,7 @@ const playBtn = document.getElementById('play-btn');
 const controlTempo = document.getElementById('control-tempo');
 const tempo = document.getElementById('tempo');
 let currentTempo = tempo.value;
-const kick = document.querySelector('audio[data-key="65"]');
+const stepIndicators = document.querySelectorAll('.light');
 let step = 0;
 let play;
 
@@ -44,6 +44,7 @@ playBtn.addEventListener('click', () => {
     playBtn.innerHTML = '<i class="material-icons">play_arrow</i>'
     clearInterval(play);
     document.querySelectorAll(`.col-${step-1}`).forEach(pad => pad.classList.remove('play'));
+    stepIndicators.forEach(indicator => indicator.classList.remove('play'));
     step = 0;
   } else {
     playBtn.innerHTML = '<i class="material-icons">pause</i>'
@@ -56,9 +57,12 @@ playBtn.addEventListener('click', () => {
 
 function playSequence() {
   const playCol = document.querySelectorAll(`.col-${step}`);
+  stepIndicators[step].classList.add('play');
   if(step - 1 < 0) {
-    document.querySelectorAll(`.col-${16}`).forEach(pad => pad.classList.remove('play'));
+    stepIndicators[15].classList.remove('play');
+    document.querySelectorAll(`.col-${15}`).forEach(pad => pad.classList.remove('play'));
   } else {
+    stepIndicators[step-1].classList.remove('play');
     document.querySelectorAll(`.col-${step - 1}`).forEach(pad => pad.classList.remove('play'));
   }
   

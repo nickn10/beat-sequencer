@@ -67,5 +67,4 @@ const LoadKits = (function(){
          sequencer.appendChild(instrumentRow);
       });
    }
-
 })();
