@@ -25,6 +25,7 @@ sequencer.addEventListener('mouseup', (e) => {
 });
 
 sequencer.addEventListener('mousedown', (e) => {
+  if(sequencer.dataset.playing === 'true') return;
   if(e.target.classList.contains('instrument-btn')) {
     const audio = e.target.previousElementSibling;
     audio.currentTime = 0;
@@ -46,6 +47,7 @@ playBtn.addEventListener('click', () => {
     playBtn.innerHTML = '<i class="material-icons">pause</i>'
     play = setInterval(() => playSequence(), (60000/currentTempo/4).toFixed(4));
   }
+  sequencer.dataset.playing = sequencer.dataset.playing === 'false' ? 'true' : 'false';
   playBtn.classList.toggle('playing');
 });
 
@@ -57,7 +59,7 @@ function playSequence() {
   } else {
     document.querySelectorAll(`.col-${16}`).forEach(pad => pad.classList.remove('play'));
   }
-
+  
   playCol.forEach(pad => {
     if(pad.classList.contains('active')) {
       const instrument = pad.classList[4].slice(5);
@@ -67,7 +69,7 @@ function playSequence() {
       audio.play();
     }
   });
-
+  
   if(step === 16) {
     step = 1;
   } else {
