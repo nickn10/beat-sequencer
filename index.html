@@ -12,17 +12,13 @@
 
 <body>
 
-   <div id="sequencer" class="container main-content flex-grid">
+   <div id="sequencer" class="main-content flex-grid">
       <!-- CONTROLS -->
       <div id="controls">
          <button id="play-btn" class="btn">
             <i class="material-icons">play_arrow</i>
          </button>
-         <p id="control-tempo">
-            <button id="increase-tempo" class="change-tempo">+</button>
-            <span id="tempo"> 120 </span>
-            <button id="decrease-tempo" class="change-tempo">-</button>
-         </p>
+         <input type="number" id="tempo" value="120">
       </div>
 
       <!-- SEQUENCER -->
@@ -32,22 +28,22 @@
             <button class="btn instrument-btn">Kick</button>
          </div>
          <!-- BEAT Grid -->
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
+         <div class="beat-1 beat-pad btn col-1"></div>
+         <div class="beat-1 beat-pad btn col-2"></div>
+         <div class="beat-1 beat-pad btn col-3"></div>
+         <div class="beat-1 beat-pad btn col-4"></div>
+         <div class="beat-2 beat-pad btn col-5"></div>
+         <div class="beat-2 beat-pad btn col-6"></div>
+         <div class="beat-2 beat-pad btn col-7"></div>
+         <div class="beat-2 beat-pad btn col-8"></div>
+         <div class="beat-3 beat-pad btn col-9"></div>
+         <div class="beat-3 beat-pad btn col-10"></div>
+         <div class="beat-3 beat-pad btn col-11"></div>
+         <div class="beat-3 beat-pad btn col-12"></div>
+         <div class="beat-4 beat-pad btn col-13"></div>
+         <div class="beat-4 beat-pad btn col-14"></div>
+         <div class="beat-4 beat-pad btn col-15"></div>
+         <div class="beat-4 beat-pad btn col-16"></div>
       </div>
       <div class="flex-grid instrument-row">
          <div class="instrument">
@@ -55,22 +51,22 @@
             <button class="btn instrument-btn">Snare</button>
          </div>
          <!-- BEAT Grid -->
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
+         <div class="beat-1 beat-pad btn col-1"></div>
+         <div class="beat-1 beat-pad btn col-2"></div>
+         <div class="beat-1 beat-pad btn col-3"></div>
+         <div class="beat-1 beat-pad btn col-4"></div>
+         <div class="beat-2 beat-pad btn col-5"></div>
+         <div class="beat-2 beat-pad btn col-6"></div>
+         <div class="beat-2 beat-pad btn col-7"></div>
+         <div class="beat-2 beat-pad btn col-8"></div>
+         <div class="beat-3 beat-pad btn col-9"></div>
+         <div class="beat-3 beat-pad btn col-10"></div>
+         <div class="beat-3 beat-pad btn col-11"></div>
+         <div class="beat-3 beat-pad btn col-12"></div>
+         <div class="beat-4 beat-pad btn col-13"></div>
+         <div class="beat-4 beat-pad btn col-14"></div>
+         <div class="beat-4 beat-pad btn col-15"></div>
+         <div class="beat-4 beat-pad btn col-16"></div>
       </div>
       <div class="flex-grid instrument-row">
          <div class="instrument">
@@ -78,22 +74,22 @@
             <button class="btn instrument-btn">Bongo</button>
          </div>
          <!-- BEAT Grid -->
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
+         <div class="beat-1 beat-pad btn col-1"></div>
+         <div class="beat-1 beat-pad btn col-2"></div>
+         <div class="beat-1 beat-pad btn col-3"></div>
+         <div class="beat-1 beat-pad btn col-4"></div>
+         <div class="beat-2 beat-pad btn col-5"></div>
+         <div class="beat-2 beat-pad btn col-6"></div>
+         <div class="beat-2 beat-pad btn col-7"></div>
+         <div class="beat-2 beat-pad btn col-8"></div>
+         <div class="beat-3 beat-pad btn col-9"></div>
+         <div class="beat-3 beat-pad btn col-10"></div>
+         <div class="beat-3 beat-pad btn col-11"></div>
+         <div class="beat-3 beat-pad btn col-12"></div>
+         <div class="beat-4 beat-pad btn col-13"></div>
+         <div class="beat-4 beat-pad btn col-14"></div>
+         <div class="beat-4 beat-pad btn col-15"></div>
+         <div class="beat-4 beat-pad btn col-16"></div>
       </div>
       <div class="flex-grid instrument-row">
          <div class="instrument">
@@ -101,22 +97,22 @@
             <button class="btn instrument-btn">Hat 1</button>
          </div>
          <!-- BEAT Grid -->
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
+         <div class="beat-1 beat-pad btn col-1"></div>
+         <div class="beat-1 beat-pad btn col-2"></div>
+         <div class="beat-1 beat-pad btn col-3"></div>
+         <div class="beat-1 beat-pad btn col-4"></div>
+         <div class="beat-2 beat-pad btn col-5"></div>
+         <div class="beat-2 beat-pad btn col-6"></div>
+         <div class="beat-2 beat-pad btn col-7"></div>
+         <div class="beat-2 beat-pad btn col-8"></div>
+         <div class="beat-3 beat-pad btn col-9"></div>
+         <div class="beat-3 beat-pad btn col-10"></div>
+         <div class="beat-3 beat-pad btn col-11"></div>
+         <div class="beat-3 beat-pad btn col-12"></div>
+         <div class="beat-4 beat-pad btn col-13"></div>
+         <div class="beat-4 beat-pad btn col-14"></div>
+         <div class="beat-4 beat-pad btn col-15"></div>
+         <div class="beat-4 beat-pad btn col-16"></div>
       </div>
       <div class="flex-grid instrument-row">
          <div class="instrument">
@@ -124,22 +120,22 @@
             <button class="btn instrument-btn">Hat 2</button>
          </div>
          <!-- BEAT Grid -->
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
+         <div class="beat-1 beat-pad btn col-1"></div>
+         <div class="beat-1 beat-pad btn col-2"></div>
+         <div class="beat-1 beat-pad btn col-3"></div>
+         <div class="beat-1 beat-pad btn col-4"></div>
+         <div class="beat-2 beat-pad btn col-5"></div>
+         <div class="beat-2 beat-pad btn col-6"></div>
+         <div class="beat-2 beat-pad btn col-7"></div>
+         <div class="beat-2 beat-pad btn col-8"></div>
+         <div class="beat-3 beat-pad btn col-9"></div>
+         <div class="beat-3 beat-pad btn col-10"></div>
+         <div class="beat-3 beat-pad btn col-11"></div>
+         <div class="beat-3 beat-pad btn col-12"></div>
+         <div class="beat-4 beat-pad btn col-13"></div>
+         <div class="beat-4 beat-pad btn col-14"></div>
+         <div class="beat-4 beat-pad btn col-15"></div>
+         <div class="beat-4 beat-pad btn col-16"></div>
       </div>
       <div class="flex-grid instrument-row">
          <div class="instrument">
@@ -147,22 +143,22 @@
             <button class="btn instrument-btn">Block</button>
          </div>
          <!-- BEAT Grid -->
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
+         <div class="beat-1 beat-pad btn col-1"></div>
+         <div class="beat-1 beat-pad btn col-2"></div>
+         <div class="beat-1 beat-pad btn col-3"></div>
+         <div class="beat-1 beat-pad btn col-4"></div>
+         <div class="beat-2 beat-pad btn col-5"></div>
+         <div class="beat-2 beat-pad btn col-6"></div>
+         <div class="beat-2 beat-pad btn col-7"></div>
+         <div class="beat-2 beat-pad btn col-8"></div>
+         <div class="beat-3 beat-pad btn col-9"></div>
+         <div class="beat-3 beat-pad btn col-10"></div>
+         <div class="beat-3 beat-pad btn col-11"></div>
+         <div class="beat-3 beat-pad btn col-12"></div>
+         <div class="beat-4 beat-pad btn col-13"></div>
+         <div class="beat-4 beat-pad btn col-14"></div>
+         <div class="beat-4 beat-pad btn col-15"></div>
+         <div class="beat-4 beat-pad btn col-16"></div>
       </div>
       <div class="flex-grid instrument-row">
          <div class="instrument">
@@ -170,22 +166,22 @@
             <button class="btn instrument-btn">Sound</button>
          </div>
          <!-- BEAT Grid -->
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
+         <div class="beat-1 beat-pad btn col-1"></div>
+         <div class="beat-1 beat-pad btn col-2"></div>
+         <div class="beat-1 beat-pad btn col-3"></div>
+         <div class="beat-1 beat-pad btn col-4"></div>
+         <div class="beat-2 beat-pad btn col-5"></div>
+         <div class="beat-2 beat-pad btn col-6"></div>
+         <div class="beat-2 beat-pad btn col-7"></div>
+         <div class="beat-2 beat-pad btn col-8"></div>
+         <div class="beat-3 beat-pad btn col-9"></div>
+         <div class="beat-3 beat-pad btn col-10"></div>
+         <div class="beat-3 beat-pad btn col-11"></div>
+         <div class="beat-3 beat-pad btn col-12"></div>
+         <div class="beat-4 beat-pad btn col-13"></div>
+         <div class="beat-4 beat-pad btn col-14"></div>
+         <div class="beat-4 beat-pad btn col-15"></div>
+         <div class="beat-4 beat-pad btn col-16"></div>
       </div>
       <div class="flex-grid instrument-row">
          <div class="instrument">
@@ -193,22 +189,22 @@
             <button class="btn instrument-btn">Cymbol</button>
          </div>
          <!-- BEAT Grid -->
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
+         <div class="beat-1 beat-pad btn col-1"></div>
+         <div class="beat-1 beat-pad btn col-2"></div>
+         <div class="beat-1 beat-pad btn col-3"></div>
+         <div class="beat-1 beat-pad btn col-4"></div>
+         <div class="beat-2 beat-pad btn col-5"></div>
+         <div class="beat-2 beat-pad btn col-6"></div>
+         <div class="beat-2 beat-pad btn col-7"></div>
+         <div class="beat-2 beat-pad btn col-8"></div>
+         <div class="beat-3 beat-pad btn col-9"></div>
+         <div class="beat-3 beat-pad btn col-10"></div>
+         <div class="beat-3 beat-pad btn col-11"></div>
+         <div class="beat-3 beat-pad btn col-12"></div>
+         <div class="beat-4 beat-pad btn col-13"></div>
+         <div class="beat-4 beat-pad btn col-14"></div>
+         <div class="beat-4 beat-pad btn col-15"></div>
+         <div class="beat-4 beat-pad btn col-16"></div>
       </div>
       <div class="flex-grid instrument-row">
          <div class="instrument">
@@ -216,22 +212,22 @@
             <button class="btn instrument-btn">Crash</button>
          </div>
          <!-- BEAT Grid -->
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
+         <div class="beat-1 beat-pad btn col-1"></div>
+         <div class="beat-1 beat-pad btn col-2"></div>
+         <div class="beat-1 beat-pad btn col-3"></div>
+         <div class="beat-1 beat-pad btn col-4"></div>
+         <div class="beat-2 beat-pad btn col-5"></div>
+         <div class="beat-2 beat-pad btn col-6"></div>
+         <div class="beat-2 beat-pad btn col-7"></div>
+         <div class="beat-2 beat-pad btn col-8"></div>
+         <div class="beat-3 beat-pad btn col-9"></div>
+         <div class="beat-3 beat-pad btn col-10"></div>
+         <div class="beat-3 beat-pad btn col-11"></div>
+         <div class="beat-3 beat-pad btn col-12"></div>
+         <div class="beat-4 beat-pad btn col-13"></div>
+         <div class="beat-4 beat-pad btn col-14"></div>
+         <div class="beat-4 beat-pad btn col-15"></div>
+         <div class="beat-4 beat-pad btn col-16"></div>
       </div>
       <div class="flex-grid instrument-row">
          <div class="instrument">
@@ -239,22 +235,22 @@
             <button class="btn instrument-btn">Ride</button>
          </div>
          <!-- BEAT Grid -->
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-1 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-2 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-3 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
-         <div class="beat-4 beat-pad btn"></div>
+         <div class="beat-1 beat-pad btn col-1"></div>
+         <div class="beat-1 beat-pad btn col-2"></div>
+         <div class="beat-1 beat-pad btn col-3"></div>
+         <div class="beat-1 beat-pad btn col-4"></div>
+         <div class="beat-2 beat-pad btn col-5"></div>
+         <div class="beat-2 beat-pad btn col-6"></div>
+         <div class="beat-2 beat-pad btn col-7"></div>
+         <div class="beat-2 beat-pad btn col-8"></div>
+         <div class="beat-3 beat-pad btn col-9"></div>
+         <div class="beat-3 beat-pad btn col-10"></div>
+         <div class="beat-3 beat-pad btn col-11"></div>
+         <div class="beat-3 beat-pad btn col-12"></div>
+         <div class="beat-4 beat-pad btn col-13"></div>
+         <div class="beat-4 beat-pad btn col-14"></div>
+         <div class="beat-4 beat-pad btn col-15"></div>
+         <div class="beat-4 beat-pad btn col-16"></div>
       </div>
    </div>
 

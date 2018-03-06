@@ -2,9 +2,15 @@ const sequencer = document.getElementById('sequencer');
 const playBtn = document.getElementById('play-btn');
 const controlTempo = document.getElementById('control-tempo');
 const tempo = document.getElementById('tempo');
-let currentTempo = Number(tempo.textContent);
+let currentTempo = tempo.value;
 const kick = document.querySelector('audio[data-key="65"]');
-let start;
+let step = 1;
+let play;
+
+tempo.addEventListener('input', (e) => {
+  currentTempo = e.target.value;
+  console.log(currentTempo);
+})
 
 window.addEventListener('keydown', (e) => {
    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
@@ -24,35 +30,63 @@ sequencer.addEventListener('mousedown', (e) => {
     const audio = e.target.previousElementSibling;
     audio.currentTime = 0;
     audio.play();
+  } else if(e.target.classList.contains('beat-pad') && !e.target.classList.contains('active')) {
+    const audio = e.target.parentElement.children[0].children[0];
+    audio.currentTime = 0;
+    audio.play();
   }
 });
 
-controlTempo.addEventListener('click', (e) => {
-  if(currentTempo > 60 && currentTempo < 200) {
-    if (e.target.id === 'increase-tempo') {
-      tempo.textContent = ++currentTempo
-    } else if (e.target.id === 'decrease-tempo') {
-      tempo.textContent = --currentTempo;
-    }
-  }
-});
+// controlTempo.addEventListener('click', (e) => {
+//   if(currentTempo > 60 && currentTempo < 200) {
+//     if (e.target.id === 'increase-tempo') {
+//       tempo.textContent = ++currentTempo
+//     } else if (e.target.id === 'decrease-tempo') {
+//       tempo.textContent = --currentTempo;
+//     }
+//   }
+// });
 
 
 playBtn.addEventListener('click', () => {
   if(playBtn.classList.contains('playing')) {
     playBtn.innerHTML = '<i class="material-icons">play_arrow</i>'
-    clearInterval(start);
+    clearInterval(play);
+    document.querySelectorAll(`.col-${step-1}`).forEach(pad => pad.classList.remove('play'));
+    step = 1;
   } else {
     playBtn.innerHTML = '<i class="material-icons">pause</i>'
-    start = setInterval(() => playSequence(), (60000/currentTempo));
+    play = setInterval(() => playSequence(), (60000/currentTempo/4).toFixed(4));
   }
   playBtn.classList.toggle('playing');
 });
 
 
 function playSequence() {
-  kick.currentTime = 0;
-  kick.play();
+  const playCol = document.querySelectorAll(`.col-${step}`);
+  if(step - 1 > 0) {
+    document.querySelectorAll(`.col-${step-1}`).forEach(pad => pad.classList.remove('play'));
+  } else {
+    document.querySelectorAll(`.col-${16}`).forEach(pad => pad.classList.remove('play'));
+  }
+
+  playCol.forEach(pad => {
+    if(pad.classList.contains('active')) {
+      pad.classList.add('play')
+    }
+  });
+
+  if(step === 16) {
+    step = 1;
+  } else {
+    step++
+  }
+  // kick.currentTime = 0;
+  // kick.play();
 }
+
+function calculateBPM() {
+  return Math.round(((44100 * 60) / (currentTempo * 16)) / 16);
+};
 
 
