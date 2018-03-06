@@ -4,8 +4,10 @@ const controlTempo = document.getElementById('control-tempo');
 const tempo = document.getElementById('tempo');
 let currentTempo = tempo.value;
 const kick = document.querySelector('audio[data-key="65"]');
-let step = 1;
+let step = 0;
 let play;
+
+LoadKits();
 
 tempo.addEventListener('input', (e) => {
   currentTempo = e.target.value;
@@ -42,7 +44,7 @@ playBtn.addEventListener('click', () => {
     playBtn.innerHTML = '<i class="material-icons">play_arrow</i>'
     clearInterval(play);
     document.querySelectorAll(`.col-${step-1}`).forEach(pad => pad.classList.remove('play'));
-    step = 1;
+    step = 0;
   } else {
     playBtn.innerHTML = '<i class="material-icons">pause</i>'
     play = setInterval(() => playSequence(), (60000/currentTempo/4).toFixed(4));
@@ -54,24 +56,24 @@ playBtn.addEventListener('click', () => {
 
 function playSequence() {
   const playCol = document.querySelectorAll(`.col-${step}`);
-  if(step - 1 > 0) {
-    document.querySelectorAll(`.col-${step-1}`).forEach(pad => pad.classList.remove('play'));
-  } else {
+  console.log(playCol);
+  if(step - 1 < 0) {
     document.querySelectorAll(`.col-${16}`).forEach(pad => pad.classList.remove('play'));
+  } else {
+    document.querySelectorAll(`.col-${step - 1}`).forEach(pad => pad.classList.remove('play'));
   }
   
   playCol.forEach(pad => {
     if(pad.classList.contains('active')) {
-      const instrument = pad.classList[4].slice(5);
-      const audio = document.querySelector(`[data-instrument="${instrument}"]`)
+      const audio = document.querySelector(`[data-key="${pad.dataset.key}"]`)
       pad.classList.add('play')
       audio.currentTime = 0;
       audio.play();
     }
   });
   
-  if(step === 16) {
-    step = 1;
+  if(step === 15) {
+    step = 0;
   } else {
     step++
   }

@@ -4,7 +4,6 @@ body {
    margin-top: 2rem;
    background: url(https://images.unsplash.com/photo-1477233534935-f5e6fe7c1159?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4a560d668d4e1af8675f367dc344a08c&auto=format&fit=crop&w=1050&q=80) no-repeat center fixed;
    background-size: cover;
-   /* background-color: black; */
    color: aliceblue;
 }
 
@@ -23,8 +22,6 @@ body {
 
 #tempo {
    display: inline-block;
-   /* text-align: center;
-   height: 1.5rem; */
    font-size: 1rem;
    width: 3rem;
    border: 1px solid black;
@@ -49,8 +46,6 @@ body {
    padding: 0;
    flex: 1;
 }
-
-
 
 .beat-pad:active {
    transform: scale(.97);
@@ -82,10 +77,9 @@ body {
 
 .instrument {
    display: flex;
-   flex-wrap: warp;
    align-items: center;
    justify-content: center;
-   flex: 2;
+   flex: 3;
 }
 
 .instrument-btn {
@@ -101,7 +95,7 @@ body {
 }
 
 .btn:active {
-   transform: scale(0.98);
+   transform: scale(0.97);
 }
 
 #controller {
