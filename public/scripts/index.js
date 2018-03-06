@@ -2,15 +2,20 @@ const sequencer = document.getElementById('sequencer');
 const playBtn = document.getElementById('play-btn');
 const controlTempo = document.getElementById('control-tempo');
 const tempo = document.getElementById('tempo');
+const kitSelector = document.getElementById('kits');
 let currentTempo = tempo.value;
 const stepIndicators = document.querySelectorAll('.light');
 let step = 0;
 let play;
 
-LoadKits();
+LoadKits('rock');
 
 tempo.addEventListener('input', (e) => {
   currentTempo = e.target.value;
+})
+
+kitSelector.addEventListener('input', (e) => {
+  LoadKits(e.target.value);
 })
 
 window.addEventListener('keydown', (e) => {
