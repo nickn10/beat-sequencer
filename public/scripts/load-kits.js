@@ -17,7 +17,7 @@ const LoadKits = (function(){
          }
       },
       rock: {
-         path: 'assets/audio/rock/',
+         path: 'https://raw.githubusercontent.com/nickn10/beat-sequencer/master/assets/audio/rock/',
          instruments: ['KICK-1', 'KICK-2', 'SNARE-1', 'SNARE-2', 'HHAT-1','HHAT-2','TOM-1','TOM-2','RIDE','CRASH', 'TAMBORINE', 'SHAKER']
       }
    }
