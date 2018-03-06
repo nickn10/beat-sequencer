@@ -9,7 +9,6 @@ let play;
 
 tempo.addEventListener('input', (e) => {
   currentTempo = e.target.value;
-  console.log(currentTempo);
 })
 
 window.addEventListener('keydown', (e) => {
@@ -37,17 +36,6 @@ sequencer.addEventListener('mousedown', (e) => {
   }
 });
 
-// controlTempo.addEventListener('click', (e) => {
-//   if(currentTempo > 60 && currentTempo < 200) {
-//     if (e.target.id === 'increase-tempo') {
-//       tempo.textContent = ++currentTempo
-//     } else if (e.target.id === 'decrease-tempo') {
-//       tempo.textContent = --currentTempo;
-//     }
-//   }
-// });
-
-
 playBtn.addEventListener('click', () => {
   if(playBtn.classList.contains('playing')) {
     playBtn.innerHTML = '<i class="material-icons">play_arrow</i>'
@@ -72,7 +60,11 @@ function playSequence() {
 
   playCol.forEach(pad => {
     if(pad.classList.contains('active')) {
+      const instrument = pad.classList[4].slice(5);
+      const audio = document.querySelector(`[data-instrument="${instrument}"]`)
       pad.classList.add('play')
+      audio.currentTime = 0;
+      audio.play();
     }
   });
 
@@ -81,12 +73,4 @@ function playSequence() {
   } else {
     step++
   }
-  // kick.currentTime = 0;
-  // kick.play();
 }
-
-function calculateBPM() {
-  return Math.round(((44100 * 60) / (currentTempo * 16)) / 16);
-};
-
-
