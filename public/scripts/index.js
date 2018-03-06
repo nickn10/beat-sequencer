@@ -56,7 +56,6 @@ playBtn.addEventListener('click', () => {
 
 function playSequence() {
   const playCol = document.querySelectorAll(`.col-${step}`);
-  console.log(playCol);
   if(step - 1 < 0) {
     document.querySelectorAll(`.col-${16}`).forEach(pad => pad.classList.remove('play'));
   } else {

@@ -2,7 +2,7 @@ const LoadKits = (function(){
    const sequencer = document.getElementById('sequencer');
    const kits = {
       default: {
-         path: 'assets/audio/kit-1/',
+         path: 'https://raw.githubusercontent.com/nickn10/beat-sequencer/master/assets/audio/kit-1/',
          instruments: ['Kick','Snare','Bongo','HHat-1','HHat-2', 'Perc', 'Sound', 'Cymbol', 'Crash', 'Ride'],
          presets: {
             patternOne: {
