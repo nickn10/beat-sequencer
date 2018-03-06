@@ -1,5 +1,6 @@
 const LoadKits = (function(){
    const sequencer = document.getElementById('sequencer');
+   const uiInstruments = document.getElementById('instruments');
    const kits = {
       default: {
          path: 'https://raw.githubusercontent.com/nickn10/beat-sequencer/master/assets/audio/kit-1/',
@@ -13,14 +14,11 @@ const LoadKits = (function(){
                step10: [0],
                step12: [3]
             }
-         },
-         userPatterns: ''
+         }
       },
-      test: {
-         path: 'test',
-         instruments: 'test',
-         presetPattern: 'test',
-         userPatterns: 'test'
+      rock: {
+         path: 'assets/audio/rock/',
+         instruments: ['KICK-1', 'KICK-2', 'SNARE-1', 'SNARE-2', 'HHAT-1','HHAT-2','TOM-1','TOM-2','RIDE','CRASH', 'TAMBORINE', 'SHAKER']
       }
    }
    const keyCodes = {
@@ -37,6 +35,7 @@ const LoadKits = (function(){
    }
 
    return (kit) => {
+      uiInstruments.innerHTML = '';
       const newKit = kits[kit] || kits.default;
       newKit.instruments.forEach((instrument, index)=> {
          const instrumentRow = document.createElement('div');
@@ -64,7 +63,7 @@ const LoadKits = (function(){
             pad.dataset.key = keyCodes[index];
             instrumentRow.appendChild(pad);
          }
-         sequencer.appendChild(instrumentRow);
+         uiInstruments.appendChild(instrumentRow);
       });
    }
 })();
