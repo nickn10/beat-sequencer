@@ -9,35 +9,33 @@ let play;
 
 LoadKits();
 
-controlPanel.addEventListener('click', (e) => {
-  switch (e.target.id) {
-    case 'increase-tempo':
-      currentTempo++;
-      tempo.textContent = currentTempo;
-      break;
-    case 'decrease-tempo':
-      currentTempo--;
-      tempo.textContent = currentTempo;
-      break;
-    case 'clear-btn':
-      document.querySelectorAll('.beat-pad').forEach(pad => pad.classList.remove('active'));
-      break;
-    case 'play-btn':
-      if (e.target.classList.contains('play-btn')) {
-        const playPauseBtn = document.getElementById('play-pause');
-        if (playPauseBtn.classList.contains('playing')) {
-          playPauseBtn.innerHTML = '<i id="play-btn" class="material-icons md-large play-btn">play_arrow</i>'
-          clearInterval(play);
-          document.querySelectorAll(`.col-${step - 1}`).forEach(pad => pad.classList.remove('play'));
-          stepIndicators.forEach(indicator => indicator.classList.remove('play'));
-          step = 0;
-        } else {
-          playPauseBtn.innerHTML = '<i id="play-btn" class="material-icons md-large play-btn">stop</i>'
-          play = setInterval(() => playSequence(), (60000 / currentTempo / 4).toFixed(4));
-        }
-        sequencer.dataset.playing = sequencer.dataset.playing === 'false' ? 'true' : 'false';
-        playPauseBtn.classList.toggle('playing');
-      }
+controlPanel.addEventListener('mouseup', (e) => {
+  const targetId = e.target.id;
+  if(targetId === 'increase-tempo') {
+    currentTempo++;
+    return tempo.textContent = currentTempo;
+  }
+  if(targetId === 'decrease-tempo') {
+    currentTempo--;
+    return tempo.textContent = currentTempo;
+  }
+  if(targetId === 'clear-btn') {
+    return document.querySelectorAll('.beat-pad').forEach(pad => pad.classList.remove('active'));
+  }
+  if(targetId === 'play-btn' || targetId === 'play-pause') {
+    const playPauseBtn = document.getElementById('play-pause');
+    if (playPauseBtn.classList.contains('playing')) {
+      playPauseBtn.innerHTML = '<i id="play-btn" class="material-icons md-large play-btn">play_arrow</i>'
+      clearInterval(play);
+      document.querySelectorAll(`.col-${step - 1}`).forEach(pad => pad.classList.remove('play'));
+      stepIndicators.forEach(indicator => indicator.classList.remove('play'));
+      step = 0;
+    } else {
+      playPauseBtn.innerHTML = '<i id="play-btn" class="material-icons md-large play-btn">stop</i>'
+      play = setInterval(() => playSequence(), (60000 / currentTempo / 4).toFixed(4));
+    }
+    sequencer.dataset.playing = sequencer.dataset.playing === 'false' ? 'true' : 'false';
+    return playPauseBtn.classList.toggle('playing');
   }
 })
 
@@ -49,7 +47,7 @@ kitSelector.addEventListener('input', (e) => {
     case 'hipHop':
       tempo.textContent = 90;
       break;
-    default: 
+    default:
       tempo.textContent = 120
       break;
   }
