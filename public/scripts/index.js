@@ -1,32 +1,59 @@
 const sequencer = document.getElementById('sequencer');
-const playBtn = document.getElementById('play-btn');
-const controlTempo = document.getElementById('control-tempo');
+const controlPanel = document.getElementById('controls');
+const kitSelector = document.getElementById('kit-selector');
 const tempo = document.getElementById('tempo');
-const kitSelector = document.getElementById('kits');
-let currentTempo = tempo.value;
+let currentTempo = Number(tempo.textContent);
 const stepIndicators = document.querySelectorAll('.light');
 let step = 0;
 let play;
 
-LoadKits('rock');
+LoadKits();
 
-tempo.addEventListener('input', (e) => {
-  currentTempo = e.target.value;
+controlPanel.addEventListener('click', (e) => {
+  switch (e.target.id) {
+    case 'increase-tempo':
+      currentTempo++;
+      tempo.textContent = currentTempo;
+      break;
+    case 'decrease-tempo':
+      currentTempo--;
+      tempo.textContent = currentTempo;
+      break;
+    case 'clear-btn':
+      document.querySelectorAll('.beat-pad').forEach(pad => pad.classList.remove('active'));
+      break;
+    case 'play-btn':
+      if (e.target.classList.contains('play-btn')) {
+        const playPauseBtn = document.getElementById('play-pause');
+        if (playPauseBtn.classList.contains('playing')) {
+          playPauseBtn.innerHTML = '<i id="play-btn" class="material-icons md-large play-btn">play_arrow</i>'
+          clearInterval(play);
+          document.querySelectorAll(`.col-${step - 1}`).forEach(pad => pad.classList.remove('play'));
+          stepIndicators.forEach(indicator => indicator.classList.remove('play'));
+          step = 0;
+        } else {
+          playPauseBtn.innerHTML = '<i id="play-btn" class="material-icons md-large play-btn">stop</i>'
+          play = setInterval(() => playSequence(), (60000 / currentTempo / 4).toFixed(4));
+        }
+        sequencer.dataset.playing = sequencer.dataset.playing === 'false' ? 'true' : 'false';
+        playPauseBtn.classList.toggle('playing');
+      }
+  }
 })
 
 kitSelector.addEventListener('input', (e) => {
   switch (e.target.value) {
     case 'rock':
-      tempo.value = 100;
+      tempo.textContent = 100;
       break;
     case 'hipHop':
-      tempo.value = 90;
+      tempo.textContent = 90;
       break;
     default: 
-      tempo.value = 120
+      tempo.textContent = 120
       break;
   }
-  currentTempo = tempo.value;
+  currentTempo = Number(tempo.textContent);
   LoadKits(e.target.value);
 })
 
@@ -48,22 +75,6 @@ sequencer.addEventListener('mousedown', (e) => {
     audio.play();
   }
 });
-
-playBtn.addEventListener('click', () => {
-  if(playBtn.classList.contains('playing')) {
-    playBtn.innerHTML = '<i class="material-icons">play_arrow</i>'
-    clearInterval(play);
-    document.querySelectorAll(`.col-${step-1}`).forEach(pad => pad.classList.remove('play'));
-    stepIndicators.forEach(indicator => indicator.classList.remove('play'));
-    step = 0;
-  } else {
-    playBtn.innerHTML = '<i class="material-icons">pause</i>'
-    play = setInterval(() => playSequence(), (60000/currentTempo/4).toFixed(4));
-  }
-  sequencer.dataset.playing = sequencer.dataset.playing === 'false' ? 'true' : 'false';
-  playBtn.classList.toggle('playing');
-});
-
 
 function playSequence() {
   const playCol = document.querySelectorAll(`.col-${step}`);

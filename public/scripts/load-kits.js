@@ -1,18 +1,26 @@
 const LoadKits = (function(){
-   const sequencer = document.getElementById('sequencer');
-   const uiInstruments = document.getElementById('instruments');
+   const uiInstruments = document.getElementById('instruments-container');
    const kits = {
       rock: {
          path: 'https://raw.githubusercontent.com/nickn10/beat-sequencer/master/assets/audio/rock/',
          instruments: ['KICK-1', 'KICK-2', 'SNARE-1', 'SNARE-2', 'HHAT-1','HHAT-2','TOM-1','TOM-2','RIDE','CRASH', 'TAMBORINE', 'SHAKER']
       },
       hipHop: {
+<<<<<<< HEAD
          path: 'https://raw.githubusercontent.com/nickn10/beat-sequencer/master/assets/audio/hip-hop/',
          instruments: ['KICK-1', 'KICK-2', 'SNARE-1', 'SNARE-2', 'HHAT-1', 'HHAT-2','CLAP-1', 'PERC-1','PERC-2','PERC-3', 'CYMBAL-1', 'VOCAL-1', 'VOCAL-2', 'VOCAL-3', 'VOCAL-4']
       },
       house: {
          path: 'https://raw.githubusercontent.com/nickn10/beat-sequencer/master/assets/audio/house/',
          instruments: ['KICK-1', 'KICK-2', 'SNARE-1', 'CLAP-1','CLAP-2', 'HHAT-1', 'HHAT-2', 'PERC-1', 'PERC-2', 'CYMBAL-1', 'CYMBAL-2','STAB-1', 'STAB-2', 'TOM-1', 'TOM-2']
+=======
+         path: 'assets/audio/hip-hop/',
+         instruments: ['KICK-1', 'KICK-2', 'SNARE-1', 'HHAT-1', 'HHAT-2','CLAP-1', 'PERC-1','PERC-2','PERC-3', 'CYMBAL-1','VOCAL-1']
+      },
+      house: {
+         path: 'assets/audio/house/',
+         instruments: ['KICK-1', 'SNARE-1', 'CLAP-1','CLAP-2', 'HHAT-1', 'HHAT-2', 'PERC-1', 'PERC-2', 'CYMBAL-1','STAB-1', 'TOM-1']
+>>>>>>> dev
       },
       techno: {
          path: 'https://raw.githubusercontent.com/nickn10/beat-sequencer/master/assets/audio/techno/',
@@ -22,7 +30,7 @@ const LoadKits = (function(){
 
    return (kit) => {
       uiInstruments.innerHTML = '';
-      const newKit = kits[kit] || kits.default;
+      const newKit = kits[kit] || kits.rock;
       newKit.instruments.forEach((instrument, index)=> {
          const instrumentRow = document.createElement('div');
          let beat = 1;
