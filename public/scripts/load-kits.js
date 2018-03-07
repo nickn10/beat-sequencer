@@ -3,7 +3,7 @@ const LoadKits = (function(){
    const kits = {
       rock: {
          path: 'assets/audio/rock/',
-         instruments: ['KICK-1', 'KICK-2', 'SNARE', 'HHAT-1','HHAT-2','TOM-1','TOM-2','RIDE','CRASH', 'TAMBORINE', 'SHAKER']
+         instruments: ['KICK-1', 'KICK-2', 'SNARE-1', 'HHAT-1','HHAT-2','TOM-1','TOM-2','RIDE','CRASH', 'TAMBORINE', 'SHAKER']
       },
       hipHop: {
          path: 'assets/audio/hip-hop/',
