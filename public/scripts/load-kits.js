@@ -2,11 +2,10 @@ const LoadKits = (function(){
    const sequencer = document.getElementById('sequencer');
    const uiInstruments = document.getElementById('instruments');
    const kits = {
-<<<<<<< HEAD
       rock: {
          path: 'https://raw.githubusercontent.com/nickn10/beat-sequencer/master/assets/audio/rock/',
          instruments: ['KICK-1', 'KICK-2', 'SNARE-1', 'SNARE-2', 'HHAT-1','HHAT-2','TOM-1','TOM-2','RIDE','CRASH', 'TAMBORINE', 'SHAKER']
-=======
+      },
       hipHop: {
          path: 'https://raw.githubusercontent.com/nickn10/beat-sequencer/master/assets/audio/hip-hop/',
          instruments: ['KICK-1', 'KICK-2', 'SNARE-1', 'SNARE-2', 'HHAT-1', 'HHAT-2','CLAP-1', 'PERC-1','PERC-2','PERC-3', 'CYMBAL-1', 'VOCAL-1', 'VOCAL-2', 'VOCAL-3', 'VOCAL-4']
@@ -18,7 +17,6 @@ const LoadKits = (function(){
       techno: {
          path: 'https://raw.githubusercontent.com/nickn10/beat-sequencer/master/assets/audio/techno/',
          instruments: ['KICK-1', 'KICK-2', 'SNARE-1', 'SNARE-2', 'HHAT-1', 'PERC-1', 'PERC-2', 'PERC-3', 'PERC-4', 'FX-1']
->>>>>>> dev
       }
    }
 
