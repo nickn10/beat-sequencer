@@ -5,27 +5,31 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
    <link rel="stylesheet" href="public/styles/style.css">
    <title>Beat Sequencer</title>
 </head>
 <body>
    <div id="sequencer" class="main-content" data-playing="false">
-      <!-- CONTROLS -->
+      <!-- CONTROL PANEL -->
       <div id="controls">
-         <button id="play-btn" class="btn">
-            <i class="material-icons">play_arrow</i>
+         <button id="play-pause" class="btn">
+            <i id="play-btn" class="material-icons md-large play-btn">play_arrow</i>
          </button>
          <div>
-            <button id="clear-pattern">Clear</button>
-            <select id="kits">
+            <button id="clear-btn" class="btn control-btn">Clear</button>
+            <select id="kit-selector" class="btn control-btn">
                <option value="rock" selected>ROCK</option>
                <option value="hipHop">HIP-HOP</option>
                <option value="house">HOUSE</option>
                <option value="techno">TECHNO</option>
             </select>
-            <input type="number" id="tempo" value="100">
+            <button id="decrease-tempo" class="change-tempo btn">-</button>
+            <span id="tempo" class="control-btn btn">100</span>
+            <button id="increase-tempo" class="change-tempo btn">+</button>
          </div>
       </div>
+       <!-- STEP INDICATORS -->
       <div class="flex-grid step-indcator">
          <div class="buffer"></div>
          <div class="step"><span class="light large"></span></div>
@@ -46,7 +50,7 @@
          <div class="step"><span class="light"></span></div>
       </div>
       <!-- INSTRUMENTS -->
-      <div id="instruments"></div>
+      <div id="instruments-container"></div>
    </div>
    <script src="public/scripts/load-kits.js"></script>
    <script src="public/scripts/index.js"></script>
