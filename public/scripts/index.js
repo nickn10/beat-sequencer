@@ -15,14 +15,19 @@ tempo.addEventListener('input', (e) => {
 })
 
 kitSelector.addEventListener('input', (e) => {
+  switch (e.target.value) {
+    case 'rock':
+      tempo.value = 100;
+      break;
+    case 'hipHop':
+      tempo.value = 90;
+      break;
+    default: 
+      tempo.value = 120
+      break;
+  }
+  currentTempo = tempo.value;
   LoadKits(e.target.value);
-})
-
-window.addEventListener('keydown', (e) => {
-   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-   if(!audio) return;
-   audio.currentTime = 0;
-   audio.play();
 })
 
 sequencer.addEventListener('mouseup', (e) => {
@@ -73,13 +78,12 @@ function playSequence() {
   
   playCol.forEach(pad => {
     if(pad.classList.contains('active')) {
-      const audio = document.querySelector(`[data-key="${pad.dataset.key}"]`)
+      const audio = document.querySelector(`[data-instrument="${pad.dataset.instrument}"]`)
       pad.classList.add('play')
       audio.currentTime = 0;
       audio.play();
     }
   });
-  
   if(step === 15) {
     step = 0;
   } else {
