@@ -57,7 +57,7 @@ body {
    color: black;
 }
 #kit-selector {
-   height: 3rem;
+   border: none;
 }
 .change-tempo {
    vertical-align: middle;
