@@ -3,7 +3,8 @@ const LoadKits = (function(){
    const kits = {
       rock: {
          path: 'https://raw.githubusercontent.com/nickn10/beat-sequencer/master/assets/audio/rock/',
-         instruments: ['KICK-1', 'KICK-2', 'SNARE-1','HHAT-1','HHAT-2','TOM-1','TOM-2','RIDE','CRASH', 'TAMBORINE', 'SHAKER']
+         instruments: ['KICK-1', 'KICK-2', 'SNARE-1','HHAT-1','HHAT-2','TOM-1','TOM-2','RIDE','CRASH', 'TAMBORINE', 'SHAKER'],
+         // userPatterns: Storage.getItem()
       },
       hipHop: {
          path: 'https://raw.githubusercontent.com/nickn10/beat-sequencer/master/assets/audio/hip-hop/',
@@ -17,6 +18,12 @@ const LoadKits = (function(){
          path: 'https://raw.githubusercontent.com/nickn10/beat-sequencer/master/assets/audio/techno/',
          instruments: ['KICK-1', 'KICK-2', 'SNARE-1', 'SNARE-2', 'HHAT-1', 'PERC-1', 'PERC-2', 'PERC-3', 'PERC-4', 'FX-1']
       }
+   }
+   const savedPatterns = {
+      rock: [],
+      hihHop: [],
+      house: [],
+      techno: [],
    }
    if(!NodeList.prototype.forEach && Array.prototype.forEach) {
       NodeList.prototype.forEach = Array.prototype.forEach;

@@ -16,16 +16,27 @@
          <button id="play-pause" class="btn">
             <i id="play-btn" class="material-icons md-large play-btn">play_arrow</i>
          </button>
-         <div>
-            <button id="clear-btn" class="btn control-btn">Clear</button>
-            <select id="kit-selector" class="control-btn">
+         <button id="clear-btn" class="btn control-btn">Reset</button>
+         <div class="control-group">
+            <p class="control-label">Patterns</p>
+            <button id="save-pattern" class="btn control-btn">Save</button>
+            <select id="saved-patterns" class="control-btn selector">
+               <option value="default">None</option>
+            </select>
+         </div>
+         <div class="control-group">
+            <p class="control-label">Genres</p>
+            <select id="kit-selector" class="control-btn selector">
                <option value="rock" selected>ROCK</option>
                <option value="hipHop">HIP-HOP</option>
                <option value="house">HOUSE</option>
                <option value="techno">TECHNO</option>
             </select>
+         </div>
+         <div class="control-group">
+            <p class="control-label">Tempo</p>
             <button id="decrease-tempo" class="change-tempo btn">-</button>
-            <span id="tempo" class="control-btn btn">100</span>
+            <span id="tempo" class="control-btn">100</span>
             <button id="increase-tempo" class="change-tempo btn">+</button>
          </div>
       </div>
