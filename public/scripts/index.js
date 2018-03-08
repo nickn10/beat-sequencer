@@ -1,16 +1,17 @@
 const sequencer = document.getElementById('sequencer');
 const controlPanel = document.getElementById('controls');
-const saveBtn = document.getElementById('save-pattern');
 const kitSelector = document.getElementById('kit-selector');
 const tempo = document.getElementById('tempo');
 let currentTempo = Number(tempo.textContent);
 const stepIndicators = document.querySelectorAll('.light');
+const playPauseBtn = document.getElementById('play-pause');
 let step = 0;
 let play;
 
+console.log(typeof Kits);
 LoadKits();
 
-controlPanel.addEventListener('mouseup', (e) => {
+controlPanel.addEventListener('click', (e) => {
   switch (e.target.id) {
     case 'increase-tempo':
       currentTempo++;
@@ -23,9 +24,18 @@ controlPanel.addEventListener('mouseup', (e) => {
     case 'clear-btn':
       document.querySelectorAll('.beat-pad').forEach(pad => pad.classList.remove('active'));
       break;
+    case 'save-pattern':
+      // Get all currently active buttons as an array
+      const newPattern = []
+      document.querySelectorAll('.active').forEach(pad => {
+        newPattern.push(`${pad.dataset.instrument},${pad.classList[3]}`);
+      });
+      // Set Array to Pattern Object 
+      // Add Pattern Object to Genre Object 
+      console.log(newPattern);
+      break;
     case 'play-btn':
     case 'play-pause':
-      const playPauseBtn = document.getElementById('play-pause');
       if (playPauseBtn.classList.contains('playing')) {
         playPauseBtn.innerHTML = '<i id="play-btn" class="material-icons md-large play-btn">play_arrow</i>'
         clearInterval(play);
@@ -87,7 +97,6 @@ function playSequence() {
     stepIndicators[step-1].classList.remove('play');
     document.querySelectorAll(`.col-${step - 1}`).forEach(pad => pad.classList.remove('play'));
   }
-  
   playCol.forEach(pad => {
     if(pad.classList.contains('active')) {
       const audio = document.querySelector(`[data-instrument="${pad.dataset.instrument}"]`)
