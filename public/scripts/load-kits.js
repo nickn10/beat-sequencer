@@ -18,14 +18,16 @@ const LoadKits = (function(){
          instruments: ['KICK-1', 'KICK-2', 'SNARE-1', 'SNARE-2', 'HHAT-1', 'PERC-1', 'PERC-2', 'PERC-3', 'PERC-4', 'FX-1']
       }
    }
-
+   if(!NodeList.prototype.forEach && Array.prototype.forEach) {
+      NodeList.prototype.forEach = Array.prototype.forEach;
+   }
    return (kit) => {
       uiInstruments.innerHTML = '';
       const newKit = kits[kit] || kits.rock;
       newKit.instruments.forEach((instrument, index)=> {
          const instrumentRow = document.createElement('div');
          let beat = 1;
-         instrumentRow.classList = 'flex-grid instrument-row';
+         instrumentRow.className = 'flex-grid instrument-row';
          instrumentRow.innerHTML = `
             <div class="instrument">
                <audio src="${newKit.path}${instrument.toLowerCase()}.wav" data-instrument="${index}"></audio>
@@ -44,7 +46,7 @@ const LoadKits = (function(){
             } else {
                beatGrid = 4
             }
-            pad.classList = `beat-${beatGrid} beat-pad btn col-${step}`
+            pad.className = `beat-${beatGrid} beat-pad btn col-${step}`
             pad.dataset.instrument = index;
             instrumentRow.appendChild(pad);
          }
