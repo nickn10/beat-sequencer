@@ -6,11 +6,12 @@ const tempo = document.getElementById('tempo');
 let currentTempo = Number(tempo.textContent);
 const stepIndicators = document.querySelectorAll('.light');
 const playPauseBtn = document.getElementById('play-pause');
-const userPresets = JSON.parse(localStorage.getItem('presets')) || {rock:[],hipHop:[],house:[],techno:[]}
+const userPresets = JSON.parse(localStorage.getItem('presets')) || {rock:[],hipHop:[],house:[],techno:[]};
 let step = 0;
 let play;
-console.log(userPresets);
-LoadKits();
+
+UIctrl.loadKit();
+UIctrl.loadPresetSelectors('rock');
 
 controlPanel.addEventListener('click', (e) => {
   switch (e.target.id) {
@@ -47,6 +48,10 @@ controlPanel.addEventListener('click', (e) => {
   }
 })
 
+presetSelector.addEventListener('input', (e) => {
+  UIctrl.loadPreset(e.target.value,kitSelector.value);
+})
+
 kitSelector.addEventListener('input', (e) => {
   switch (e.target.value) {
     case 'rock':
@@ -60,7 +65,8 @@ kitSelector.addEventListener('input', (e) => {
       break;
   }
   currentTempo = Number(tempo.textContent);
-  LoadKits(e.target.value);
+  UIctrl.loadKit(e.target.value);
+  UIctrl.loadPresetSelectors(e.target.value);
 })
 
 sequencer.addEventListener('mouseup', (e) => {
@@ -120,11 +126,7 @@ function savePreset() {
       for(let i=0; i<presetSelector.children.length; i++) {
         presetSelector.children[i].removeAttribute('selected');
       }
-      const option = document.createElement('option');
-      option.setAttribute('value', `preset-${kit.length}`);
-      option.setAttribute('selected', true);
-      option.appendChild(document.createTextNode(`Preset ${kit.length}`));
-      presetSelector.insertBefore(option, document.getElementById('new-preset'));
+      UIctrl.addPresetSelector(kit);
     } else {
       const presetNum = Number(presetSelector.value.slice(7));
       kit[presetNum-1] = newPreset;
