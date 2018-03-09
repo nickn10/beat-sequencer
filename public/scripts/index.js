@@ -110,22 +110,19 @@ sequencer.addEventListener('mousedown', (e) => {
 });
 
 function playSequence() {
-  stepIndicators[step].classList.add('play');
-  if(step - 1 < 0) {
-    stepIndicators[15].classList.remove('play');
-    document.querySelectorAll(`.col-${15}`).forEach(pad => pad.classList.remove('play'));
-  } else {
-    stepIndicators[step-1].classList.remove('play');
-    document.querySelectorAll(`.col-${step - 1}`).forEach(pad => pad.classList.remove('play'));
+  const activePads = document.querySelectorAll(`.col-${step}.active`);
+  const length = activePads.length;
+  const lastPlayed = document.querySelectorAll('.play') || [];
+  for(let i=0; i<lastPlayed.length; i++) {
+    lastPlayed[i].classList.remove('play');
   }
-  document.querySelectorAll(`.col-${step}`).forEach(pad => {
-    if(pad.classList.contains('active')) {
-      const audio = document.querySelector(`[data-instrument="${pad.dataset.instrument}"]`)
-      pad.classList.add('play')
-      audio.currentTime = 0;
-      audio.play();
-    }
-  });
+  stepIndicators[step].classList.add('play');
+  for(let i=0; i<length; i++) {
+    const audio = document.querySelector(`[data-instrument="${activePads[i].dataset.instrument}"]`)
+    activePads[i].classList.toggle('play');
+    audio.currentTime = 0;
+    audio.play();
+  }
   if(step === 15) {
     step = 0;
   } else {
