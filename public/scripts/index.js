@@ -1,14 +1,15 @@
 const sequencer = document.getElementById('sequencer');
 const controlPanel = document.getElementById('controls');
 const kitSelector = document.getElementById('kit-selector');
+const presetSelector = document.getElementById('saved-presets');
 const tempo = document.getElementById('tempo');
 let currentTempo = Number(tempo.textContent);
 const stepIndicators = document.querySelectorAll('.light');
 const playPauseBtn = document.getElementById('play-pause');
+const userPresets = JSON.parse(localStorage.getItem('presets')) || {rock:[],hipHop:[],house:[],techno:[]}
 let step = 0;
 let play;
-
-console.log(typeof Kits);
+console.log(userPresets);
 LoadKits();
 
 controlPanel.addEventListener('click', (e) => {
@@ -24,15 +25,9 @@ controlPanel.addEventListener('click', (e) => {
     case 'clear-btn':
       document.querySelectorAll('.beat-pad').forEach(pad => pad.classList.remove('active'));
       break;
-    case 'save-pattern':
-      // Get all currently active buttons as an array
-      const newPattern = []
-      document.querySelectorAll('.active').forEach(pad => {
-        newPattern.push(`${pad.dataset.instrument},${pad.classList[3]}`);
-      });
-      // Set Array to Pattern Object 
-      // Add Pattern Object to Genre Object 
-      console.log(newPattern);
+    case 'save-icon':
+    case 'save-preset':
+      savePreset();
       break;
     case 'play-btn':
     case 'play-pause':
@@ -109,5 +104,31 @@ function playSequence() {
     step = 0;
   } else {
     step++
+  }
+}
+
+function savePreset() {
+  if(!!presetSelector.value) {
+    const kit = userPresets[kitSelector.value];
+    const newPreset = []
+    document.querySelectorAll('.active').forEach(pad => {
+      newPreset.push(`${pad.dataset.instrument},${pad.classList[3]}`);
+    });
+    if (presetSelector.value === 'new') {
+      if(newPreset.length < 1) return;
+      kit.push(newPreset);
+      for(let i=0; i<presetSelector.children.length; i++) {
+        presetSelector.children[i].removeAttribute('selected');
+      }
+      const option = document.createElement('option');
+      option.setAttribute('value', `preset-${kit.length}`);
+      option.setAttribute('selected', true);
+      option.appendChild(document.createTextNode(`Preset ${kit.length}`));
+      presetSelector.insertBefore(option, document.getElementById('new-preset'));
+    } else {
+      const presetNum = Number(presetSelector.value.slice(7));
+      kit[presetNum-1] = newPreset;
+    }
+    localStorage.setItem('presets', JSON.stringify(userPresets));
   }
 }
