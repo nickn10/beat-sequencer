@@ -6,7 +6,7 @@ const tempo = document.getElementById('tempo');
 let currentTempo = Number(tempo.textContent);
 const stepIndicators = document.querySelectorAll('.light');
 const playPauseBtn = document.getElementById('play-pause');
-const userPresets = JSON.parse(localStorage.getItem('presets')) || {rock:[],hipHop:[],house:[],techno:[]};
+const userPresets = JSON.parse(localStorage.getItem('presets')) || {rock:[],hipHop:[],house:[],techno:[],dnb:[]};
 let step = 0;
 let playing;
 
@@ -78,6 +78,9 @@ kitSelector.addEventListener('input', (e) => {
     case 'hipHop':
       tempo.textContent = 90;
       break;
+    case 'dnb':
+      tempo.textContent = 170;
+      break;
     default:
       tempo.textContent = 120
       break;
@@ -132,7 +135,7 @@ function playSequence() {
 
 function savePreset() {
   if(!!presetSelector.value) {
-    const kit = userPresets[kitSelector.value];
+    const kit = userPresets[kitSelector.value]
     const newPreset = []
     document.querySelectorAll('.active').forEach(pad => {
       newPreset.push(`${pad.dataset.instrument},${pad.classList[3]}`);
