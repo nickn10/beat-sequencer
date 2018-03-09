@@ -8,7 +8,7 @@ const UIctrl = (function(){
       const presetIndex = typeof index === 'number' ? index+1 : kit.length;
       const option = document.createElement('option');
       option.setAttribute('value', `preset-${presetIndex}`);
-      option.setAttribute('selected', true);
+      option.setAttribute('selected', 'selected');
       option.appendChild(document.createTextNode(`Preset ${presetIndex}`));
       presetSelector.insertBefore(option, document.getElementById('new-preset'));
    }
@@ -27,7 +27,7 @@ const UIctrl = (function(){
 
    const loadPreset = (preset, genre) => {
       const presetIndex = Number(preset.slice(7)) - 1;
-      document.querySelectorAll('.beat-pad').forEach(pad => pad.classList.remove('active'));
+      document.querySelectorAll('.active').forEach(pad => pad.classList.remove('active'));
       userPresets[genre][presetIndex].forEach(pad => {
          const padArr = pad.split(',');
          document.querySelector(`.${padArr[1]}[data-instrument="${padArr[0]}"]`).classList.add('active');

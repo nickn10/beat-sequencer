@@ -8,7 +8,7 @@ const stepIndicators = document.querySelectorAll('.light');
 const playPauseBtn = document.getElementById('play-pause');
 const userPresets = JSON.parse(localStorage.getItem('presets')) || {rock:[],hipHop:[],house:[],techno:[]};
 let step = 0;
-let play;
+let playing;
 
 UIctrl.loadKit();
 UIctrl.loadPresetSelectors('rock');
@@ -18,10 +18,18 @@ controlPanel.addEventListener('click', (e) => {
     case 'increase-tempo':
       currentTempo++;
       tempo.textContent = currentTempo;
+      if(playPauseBtn.classList.contains('playing')) {
+        clearInterval(playing);
+        playing = setInterval(() => playSequence(), (60000 / currentTempo / 4).toFixed(4));
+      }
       break;
     case 'decrease-tempo':
       currentTempo--;
       tempo.textContent = currentTempo;
+      if (playPauseBtn.classList.contains('playing')) {
+        clearInterval(playing);
+        playing = setInterval(() => playSequence(), (60000 / currentTempo / 4).toFixed(4));
+      }
       break;
     case 'clear-btn':
       document.querySelectorAll('.beat-pad').forEach(pad => pad.classList.remove('active'));
@@ -30,17 +38,26 @@ controlPanel.addEventListener('click', (e) => {
     case 'save-preset':
       savePreset();
       break;
+    case 'delete-icon':
+    case 'delete-preset':
+      if(confirm('Are you sure you want to delete this preset?')) {
+        userPresets[kitSelector.value].splice([Number(presetSelector.value)], 1);
+        localStorage.setItem('presets', JSON.stringify(userPresets));
+        UIctrl.loadPresetSelectors(kitSelector.value);
+        document.querySelectorAll('.active').forEach(pad => pad.classList.remove('active'));
+      }
+      break;
     case 'play-btn':
     case 'play-pause':
       if (playPauseBtn.classList.contains('playing')) {
         playPauseBtn.innerHTML = '<i id="play-btn" class="material-icons md-large play-btn">play_arrow</i>'
-        clearInterval(play);
+        clearInterval(playing);
         document.querySelectorAll(`.col-${step - 1}`).forEach(pad => pad.classList.remove('play'));
         stepIndicators.forEach(indicator => indicator.classList.remove('play'));
         step = 0;
       } else {
         playPauseBtn.innerHTML = '<i id="play-btn" class="material-icons md-large play-btn">stop</i>'
-        play = setInterval(() => playSequence(), (60000 / currentTempo / 4).toFixed(4));
+        playing = setInterval(() => playSequence(), (60000 / currentTempo / 4).toFixed(4));
       }
       sequencer.dataset.playing = sequencer.dataset.playing === 'false' ? 'true' : 'false';
       playPauseBtn.classList.toggle('playing');
@@ -49,6 +66,7 @@ controlPanel.addEventListener('click', (e) => {
 })
 
 presetSelector.addEventListener('input', (e) => {
+  if(e.target.value === 'new') return;
   UIctrl.loadPreset(e.target.value,kitSelector.value);
 })
 
@@ -89,7 +107,6 @@ sequencer.addEventListener('mousedown', (e) => {
 });
 
 function playSequence() {
-  const playCol = document.querySelectorAll(`.col-${step}`);
   stepIndicators[step].classList.add('play');
   if(step - 1 < 0) {
     stepIndicators[15].classList.remove('play');
@@ -98,7 +115,7 @@ function playSequence() {
     stepIndicators[step-1].classList.remove('play');
     document.querySelectorAll(`.col-${step - 1}`).forEach(pad => pad.classList.remove('play'));
   }
-  playCol.forEach(pad => {
+  document.querySelectorAll(`.col-${step}`).forEach(pad => {
     if(pad.classList.contains('active')) {
       const audio = document.querySelector(`[data-instrument="${pad.dataset.instrument}"]`)
       pad.classList.add('play')
@@ -122,14 +139,16 @@ function savePreset() {
     });
     if (presetSelector.value === 'new') {
       if(newPreset.length < 1) return;
-      kit.push(newPreset);
-      for(let i=0; i<presetSelector.children.length; i++) {
+      for (let i = 0; i < presetSelector.children.length; i++) {
         presetSelector.children[i].removeAttribute('selected');
       }
+      kit.push(newPreset);
       UIctrl.addPresetSelector(kit);
     } else {
-      const presetNum = Number(presetSelector.value.slice(7));
-      kit[presetNum-1] = newPreset;
+      if(confirm('Are you sure you want to overwrite this preset?')) {
+        const presetNum = Number(presetSelector.value.slice(7));
+        kit[presetNum - 1] = newPreset;
+      }
     }
     localStorage.setItem('presets', JSON.stringify(userPresets));
   }
